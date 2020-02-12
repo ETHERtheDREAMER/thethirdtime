@@ -37,6 +37,18 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        {
+
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                moveSpeed = 80;
+            }
+            else
+            {
+                moveSpeed = 20;
+            }
+        }
+
         if (canMove)
         {
             theRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * moveSpeed;
@@ -59,6 +71,7 @@ public class PlayerController : MonoBehaviour
         }
 
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, bottomLeftLimit.x, topRightLimit.x), Mathf.Clamp(transform.position.y, bottomLeftLimit.y, topRightLimit.y), transform.position.z);
+
     }
 
     public void SetBounds(Vector3 botLeft, Vector3 topRight)
